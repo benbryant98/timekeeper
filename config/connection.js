@@ -3,6 +3,7 @@ require('dotenv').config();
 
 let sequelize;
 
+// change this JAWSDB_URL
 if (process.env.JAWSDB_URL) {
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
@@ -13,6 +14,7 @@ if (process.env.JAWSDB_URL) {
     {
       host: 'localhost',
       dialect: 'mysql',
+      // leave this alone
       port: 3306
     }
   );
