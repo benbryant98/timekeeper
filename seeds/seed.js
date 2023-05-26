@@ -1,1 +1,16 @@
-//break down by day, week, month. 
+//break down by day, week, month.
+const sequelize = require("../config/connection");
+const { User } = require("../models");
+
+const userData = require("./userData.json");
+
+const seedDb = async () => {
+  await sequelize.sync({ force: true });
+
+  await User.bulkCreate(userData, {
+    individualHooks: true,
+    returning: true,
+  });
+};
+
+seedDb();
