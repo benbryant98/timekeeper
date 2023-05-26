@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Monthly extends Model {}
+class Task extends Model {}
 
-Monthly.init(
+Task.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -19,15 +19,10 @@ Monthly.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    date: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
-      allowNull: false,
-    },
-    user_id: {
+    daily_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "user",
+        model: "daily",
         key: "id",
       },
     },
@@ -36,10 +31,8 @@ Monthly.init(
     sequelize,
     timestamps: true,
     freezeTableName: true,
-    modelName: "monthly",
+    modelName: "task",
   }
 );
 
-module.exports = Monthly;
-
-//finished
+module.exports = Task;
