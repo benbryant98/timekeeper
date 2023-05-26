@@ -23,6 +23,13 @@ Daily.init({
     defaultValue: DataTypes.NOW,
     allowNull: false,
   },
+  weekly_id: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: "weekly",
+      key: "id",
+    },
+  },
   sequelize,
   timestamps: true,
   freezeTableName: true,

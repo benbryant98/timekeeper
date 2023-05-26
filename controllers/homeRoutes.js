@@ -7,7 +7,8 @@ router.get("/", withAuth, async (req, res) => {
     try {
       const monthlyData = await Monthly.findAll({
         include: [
-          //TODO add weekly and daily values to include
+          { model: Weekly },
+          { model: Daily }
         ],
       });
 
@@ -25,6 +26,7 @@ router.get("/", withAuth, async (req, res) => {
 
   //TODO add render for non-personalized calendar info, such as holidays
   res.render("login");
+  // make another handlebars page. when you log on, have a daily, monthly, weekly but if not logged in, personalized info won't be there. maybe find api with important dates.
 });
 
 router.get("/profile", withAuth, async (req, res) => {

@@ -30,3 +30,5 @@ Weekly.init({
 });
 
 module.exports = Weekly;
+
+//finished
