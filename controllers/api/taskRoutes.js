@@ -8,7 +8,7 @@ router.post("/", withAuth, async (req, res) => {
       title: req.body.dayName,
       body: req.body.dailyTask,
       date: req.body.date,
-      frequency: "Once",
+      frequency: req.body.frequency,
       user_id: req.session.user_id,
     });
 
