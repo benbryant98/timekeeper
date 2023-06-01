@@ -19,17 +19,25 @@ Task.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    daily_id: {
+    frequency: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    date: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "daily",
+        model: "user",
         key: "id",
       },
     },
   },
   {
     sequelize,
-    timestamps: true,
+    timestamps: false,
     freezeTableName: true,
     modelName: "task",
   }
