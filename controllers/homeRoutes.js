@@ -45,14 +45,6 @@ router.get("/profile", async (req, res) => {
       logged_in: true,
     });
   } catch (err) {
-    const userData = await User.findByPk(req.session.userId, {
-      attributes: { exclude: ["password"] },
-      include: [{ model: Task }],
-    });
-
-    const user = userData.get({ plain: true });
-
-    console.log(user);
     res.status(500).json(err);
   }
 });
