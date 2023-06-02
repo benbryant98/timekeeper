@@ -37,6 +37,9 @@ const deleteButton = async (event) => {
         }
     }
 };
+// My tutor and I console logged a lot of lines of code. He suggested this for the new task form to replace line 44-45. We tested it and it worked. The Create and Submit buttons went to the same place so only one is needed unless you have other plans for it.//
+// const newTaskForm = document.querySelector('.new-task-form')
+// newTaskForm.addEventListener("submit", newFormHandler);
 
 document.querySelector('.new-task-form')
 document.addEventListener('submit', newFormHandler);
