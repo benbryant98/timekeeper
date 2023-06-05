@@ -7,3 +7,8 @@ label {
 input {
     background-color:rgb(236, 236, 236) !important;
 }
+
+.task {
+    width: 120px;
+    height: 25px;
+}
