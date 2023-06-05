@@ -7,7 +7,7 @@ const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   //TODO add render for non-personalized calendar info, such as holidays
-  res.render("home");
+  res.render("home", req.session);
 });
 
 router.get("/profile", withAuth, async (req, res) => {
