@@ -2,18 +2,19 @@ const router = require("express").Router();
 const Task = require("../../models/Task");
 const withAuth = require("../../utils/auth");
 
-router.post("/", withAuth, async (req, res) => {
- console.log(req.body)
+router.post("/", async (req, res) => {
+  console.log(req.body);
   try {
     const taskData = await Task.create({
-      title: req.body.dayName,
-      body: req.body.dailyTask,
+      title: req.body.title,
+      body: req.body.body,
       date: req.body.date,
-      frequency: "Once",
+      frequency: req.body.frequency,
       user_id: req.session.user_id,
     });
 
     res.status(200).json(taskData);
+    console.log("Task created.");
   } catch (err) {
     res.status(400).json(err);
   }

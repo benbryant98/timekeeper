@@ -8,48 +8,53 @@
   <div class="col-md-6">
     <h5 class="is-size-1 has-text-black has-text-weight-bold	">Create A New Task</h5>
 
-    <form class="form new-task-form">
-      <label for="task">Select Your Task Type:</label>
-      <select class="task" name="task">
-        <option value="daily task">Daily Task</option>
-        <option value="weekly task">Weekly Task</option>
-        <option value="monthly task">Monthly Task</option>
-      </select>
-      <input type="submit">
+    <form class="form new-task-form" id="task-form">
 
+      <div class="field">
+        <label class="label">Select a Task Frequency:</label>
+        <div class="control">
+          <select id="frequency" class="select" name="frequency">
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+        </div>
+      </div>
       
-      <div class="form-group">
-        <label for="day-name has-text-weight-bold	">Task Name:</label>
-        <input class="form-input" type="text" id="day-name" name="day-name" />
+      <div class="field">
+        <label for="title">Task Name:</label>
+        <input class="form-input" type="text" id="title" name="title" />
       </div>
-      <div class="form-group">
-        <label for="daily-task has-text-weight-bold	">Daily Tasks</label>
+
+      <div class="field">
+        <label for="task-date">Date:</label>
+        <input class="form-input" type="date" id="task-date" name="task-date" value="2023-06-05" min="2023-06-05" max="2030-12-31">
+      </div>
+
+      <div class="field">
+        <label for="task-body">Task Details</label>
+        <div class="control">
         <textarea
-          class="form-input"
-          type="text"
-          id="daily-task"
-          name="daily-task"
+          class="textarea"
+          id="task-body"
+          name="task-body"
+          placeholder="Additional information..."
         ></textarea>
+        </div>
       </div>
-      <div class="form-group">
-        <button type="submit" class="button is-dark button is-medium is-half width button is-rounded button is-hovered button is-centered">Create</button>
+
+      <div class="field">
+        <div class="control">
+        <input type="submit" value="Create" class="btn btn-black has-text-white"></input>
+        </div>
       </div>
     </form>
 
-    {{#if tasks.length}}
+    {{#if username}}
     <div class="col-md-6 task-list">
         <h3>Current Tasks:</h3>
 
-        {{#each tasks as |task|}}
-        <div class="row mb-2">
-            <div class="col-md-8">
-                <h4><a href="/task{{task.id}}">{{task.name}}</a></h4>
-            </div>
-            <div class="col-md-4">
-                <button class="btn btn-sm btn-danger" data-id="{{task.id}}">DELETE</button>
-            </div>
-        </div>
-        {{/each}}
+        {{> task-detail}}
     </div>
     {{/if}}
 </div>

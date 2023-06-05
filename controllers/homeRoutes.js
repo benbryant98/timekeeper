@@ -6,38 +6,18 @@ const withAuth = require("../utils/auth");
 //removed withAuth from routes so that we can use them and see what we're editing
 
 router.get("/", async (req, res) => {
-  // if (req.session.logged_in) {
-  //   try {
-  //     const monthlyData = await Monthly.findAll({
-  //       include: [{ model: Weekly }, { model: Daily }],
-  //     });
-
-  //     const tasks = monthlyData.map((task) => task.get({ plain: true }));
-
-  //     res.render("home", {
-  //       tasks,
-  //       logged_in: req.session.logged_in,
-  //     });
-  //   } catch (err) {
-  //     res.status(500).json(err);
-  //   }
-  //   return;
-  // }
-
   //TODO add render for non-personalized calendar info, such as holidays
-  console.log(req.session);
-  res.render("home");
-  // make another handlebars page. when you log on, have a daily, monthly, weekly but if not logged in, personalized info won't be there. maybe find api with important dates.
+  res.render("home", { logged_in: true });
 });
 
-router.get("/profile", async (req, res) => {
+router.get("/profile", withAuth, async (req, res) => {
   try {
-    // Commented this out so that profile would render, need to ensure this sequelize data has a landing spot in the handlebar or it will not render correctly
-
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ["password"] },
+      // include: [{ model: Task }],
     });
 
+    console.log(userData);
     const user = userData.get({ plain: true });
 
     res.render("profile", {
@@ -51,7 +31,7 @@ router.get("/profile", async (req, res) => {
 
 router.get("/login", (req, res) => {
   if (req.session.logged_in) {
-    res.redirect("/profile");
+    res.redirect("/");
     return;
   }
 
