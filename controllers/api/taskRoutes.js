@@ -3,6 +3,7 @@ const Task = require("../../models/Task");
 const withAuth = require("../../utils/auth");
 
 router.post("/", withAuth, async (req, res) => {
+ console.log(req.body)
   try {
     const taskData = await Task.create({
       title: req.body.dayName,
