@@ -1,6 +1,18 @@
 <h1>To-Do Today:</h1>
-{{#if tasks.length}}
-  {{#each tasks}}
-    <h2>{{task.title}}</h2>
+
+<div class="accordion">
+  {{#each items}}
+    <div class="accordion-item">
+      <div class="accordion-header">
+        <button class="accordion-trigger"></button>
+      </div>
+      <div class="accordion-content">
+        <ul>
+          {{#each content}}
+            <li>{{this}}</li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
   {{/each}}
-{{/if}}
+</div>
