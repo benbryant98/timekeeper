@@ -1,1 +1,6 @@
 <h1>To-Do Today:</h1>
+{{#if tasks.length}}
+  {{#each tasks}}
+    <h2>{{task.title}}</h2>
+  {{/each}}
+{{/if}}

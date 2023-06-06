@@ -7,7 +7,19 @@ const withAuth = require("../utils/auth");
 
 router.get("/", async (req, res) => {
   //TODO add render for non-personalized calendar info, such as holidays
-  res.render("home", req.session);
+  if (req.session.logged_in) {
+    try {
+      const taskData = await Task.findAll({
+        where: { user_id: req.session.user_id },
+      });
+      console.log(taskData);
+      res.render("home", { tasks: taskData, session: req.session });
+    } catch (err) {
+      res.status(404).json(err);
+    }
+  } else {
+    res.render("home", { logged_in: false });
+  }
 });
 
 router.get("/profile", withAuth, async (req, res) => {
