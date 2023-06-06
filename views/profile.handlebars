@@ -1,60 +1,55 @@
 <div class="row">
   <div class="col-auto">
-    <h1 class="is-size-1 has-text-black has-text-weight-bold	">Welcome, {{name}}</h1>
+    <h1 class="is-size-1 is-underlined">Welcome, {{name}}</h1>
   </div>
 </div>
 
 <div class="row mt-4">
   <div class="col-md-6">
-    <h5 class="is-size-1 has-text-black has-text-weight-bold	">Create A New Task</h5>
+    <h1 class="is-size-1 is-underlined">Create a New Task</h1>
 
-    <form class="form new-task-form" id="task-form">
+    <form class="form new-task-form">
+      <label for="task">Select a Task Date:</label>
+      <select class="task" name="task">
+        <option value="daily task">Daily Task</option>
+        <option value="weekly task">Weekly Task</option>
+        <option value="monthly task">Monthly Task</option>
+      </select>
+      <input type="submit">
 
-      <div class="field">
-        <label class="label">Select a Task Frequency:</label>
-        <div class="control">
-          <select id="frequency" class="select" name="frequency">
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="monthly">Monthly</option>
-          </select>
-        </div>
-      </div>
       
-      <div class="field">
-        <label for="title">Task Name:</label>
-        <input class="form-input" type="text" id="title" name="title" />
+      <div class="form-group">
+        <label for="day-name">Task Name:</label>
+        <input class="form-input" type="text" id="day-name" name="day-name" />
       </div>
-
-      <div class="field">
-        <label for="task-date">Date:</label>
-        <input class="form-input" type="date" id="task-date" name="task-date" value="2023-06-05" min="2023-06-05" max="2030-12-31">
-      </div>
-
-      <div class="field">
-        <label for="task-body">Task Details</label>
-        <div class="control">
+      <div class="form-group">
+        <label for="daily-task">Daily Tasks:</label>
         <textarea
-          class="textarea"
-          id="task-body"
-          name="task-body"
-          placeholder="Additional information..."
+          class="form-input"
+          type="text"
+          id="daily-task"
+          name="daily-task"
         ></textarea>
-        </div>
       </div>
-
-      <div class="field">
-        <div class="control">
-        <input type="submit" value="Create" class="btn btn-black has-text-white"></input>
-        </div>
+      <div class="form-group">
+        <button type="submit" class="button is-dark button is-medium is-half width button is-rounded button is-hovered button is-centered">CREATE</button>
       </div>
     </form>
 
-    {{#if username}}
+    {{#if tasks.length}}
     <div class="col-md-6 task-list">
         <h3>Current Tasks:</h3>
 
-        {{> task-detail}}
+        {{#each tasks as |task|}}
+        <div class="row mb-2">
+            <div class="col-md-8">
+                <h4><a href="/task{{task.id}}">{{task.name}}</a></h4>
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-sm btn-danger" data-id="{{task.id}}">DELETE</button>
+            </div>
+        </div>
+        {{/each}}
     </div>
     {{/if}}
 </div>
