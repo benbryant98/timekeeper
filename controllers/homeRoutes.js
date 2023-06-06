@@ -13,7 +13,10 @@ router.get("/", async (req, res) => {
         where: { user_id: req.session.user_id },
       });
       console.log(taskData);
-      res.render("home", { tasks: taskData, session: req.session });
+      res.render("home", {
+        tasks: taskData,
+        session: req.session,
+      });
     } catch (err) {
       res.status(404).json(err);
     }
