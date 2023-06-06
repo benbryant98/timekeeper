@@ -1,18 +1,18 @@
 <h1>Your week at a glance!</h1>
 
-<div class="columns">
-  <div class="column is-half">
-  </div>
-  <div class="column is-half">
-  </div>
-  <div class="column is-half">
-  </div>
-  <div class="column is-half">
-  </div>
-   <div class="column is-half">
-  </div>
-  <div class="column is-half">
-  </div>
-  <div class="column is-half">
-  </div>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Day</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each days}}
+      <tr>
+        <td>{{dayOfWeek}}</td>
+        <td>{{date}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

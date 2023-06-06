@@ -1,1 +1,25 @@
 <h2>{{current_month}}</h2>
+
+<table>
+  <caption>{{monthName}} {{year}}</caption>
+  <thead>
+    <tr>
+      <th>Sun</th>
+      <th>Mon</th>
+      <th>Tue</th>
+      <th>Wed</th>
+      <th>Thu</th>
+      <th>Fri</th>
+      <th>Sat</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each weeks}}
+      <tr>
+        {{#each this}}
+          <td>{{this}}</td>
+        {{/each}}
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
