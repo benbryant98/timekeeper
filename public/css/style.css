@@ -15,3 +15,12 @@ input {
 .logout {
     font-size: x-small !important;
 }
+
+.select {
+    width: 80px;
+    border-radius: 10px;
+}
+
+.btn {
+    background-color: black;
+}
