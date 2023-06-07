@@ -82,4 +82,18 @@ module.exports = {
     }
     return bool;
   },
+  num_array: (num) => {
+    const numArray = [];
+    for (let i = 0; i < num; i++) {
+      numArray.push(i);
+    }
+    return numArray;
+  },
+  get_monday: (date) => {
+    let day = date.getDay() || 7;
+    if (day !== 1) {
+      date.setHours(-24 * (day - 1));
+    }
+    return date;
+  },
 };
