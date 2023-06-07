@@ -31,7 +31,7 @@
     {{#each (days_array) as |day|}}
       <li class="calendar-day">{{day}}
         {{#if (date_checker day)}}
-        {{> task-detail}}
+        {{> holiday holiday=(holiday_info day)}}
         {{/if}}
       </li>
     {{/each}}

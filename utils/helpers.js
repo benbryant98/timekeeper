@@ -58,4 +58,17 @@ module.exports = {
     });
     return bool;
   },
+  holiday_info: (date) => {
+    const holidays = fedHolidays.allForYear(2023, options);
+    let holidayInfo = "";
+    holidays.forEach((holiday) => {
+      holidayDate = new Date(holiday.date).getDate();
+      const holidayMonth = new Date(holiday.date).getMonth();
+
+      if (holidayDate === date && holidayMonth === new Date().getMonth()) {
+        holidayInfo = holiday.name;
+      }
+    });
+    return holidayInfo;
+  },
 };
