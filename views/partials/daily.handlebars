@@ -1,7 +1,14 @@
-<h1 class="is-size-3 has-text-weight-bold">To-Do Today:</h1>
-
-{{#each tasks as |task|}}
-<div class='card-content'>
-<button class='button'>{{task.dataValues.title}}</button>
-{{/each}}
+<div class="daily-container m-2">
+  <nav class="panel is-pushed-left">
+    <h1
+      class="is-size-3 has-text-weight-bold panel-heading has-background-dark has-text-white"
+    >To-Do Today:</h1>
+    {{#each tasks as |task|}}
+      {{#if (check_date task.dataValues.date ../today)}}
+        <a class="panel-block has-background-warning">
+          {{task.dataValues.title}}
+        </a>
+      {{/if}}
+    {{/each}}
+  </nav>
 </div>

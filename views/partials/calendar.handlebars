@@ -1,4 +1,4 @@
-<div class="calendar-month">
+<div class="calendar-month m-2">
   <!-- The calendar header -->
   <section class="calendar-month-header">
     <!-- Month name -->
@@ -30,7 +30,7 @@
   <ul id="calendar-days" class="days-grid">
     {{#each (days_array) as |day|}}
       <li class="calendar-day">{{day}}
-        {{#if (date_checker day)}}
+        {{#if (check_holiday day)}}
         {{> holiday holiday=(holiday_info day)}}
         {{/if}}
         {{#each ../tasks as |task|}}

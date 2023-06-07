@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const Task = require("../models/Task");
 const withAuth = require("../utils/auth");
+const { current_day } = require("../utils/helpers");
 
 //removed withAuth from routes so that we can use them and see what we're editing
 
@@ -15,6 +16,7 @@ router.get("/", async (req, res) => {
       res.render("home", {
         tasks: taskData,
         logged_in: true,
+        today: current_day(),
       });
     } catch (err) {
       res.status(404).json(err);

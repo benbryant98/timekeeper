@@ -1,10 +1,10 @@
 {{#if logged_in}}
-{{> daily tasks=tasks}}
-{{> weekly tasks=tasks}}
+{{> daily tasks=tasks today=today}}
+{{> weekly tasks=tasks monday=(get_monday today)}}
 {{> calendar tasks=tasks }}
 {{else}}
 
-<h1>Welcome, please login or create an account for full access</h1>
+<h1 class="title">Welcome, please login or create an account for full access</h1>
 
 {{> calendar}}
 

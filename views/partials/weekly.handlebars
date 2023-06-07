@@ -1,15 +1,31 @@
-<h1 class="is-size-3 has-text-weight-bold">Your week at a glance!</h1>
+<div class="weekly-container m-2">
+<h1 class="is-size-3 has-text-weight-bold my-1">Your week at a glance!</h1>
 
-<div class="columns">
-  {{#each (num_array 7)}}
-  <div class="column">
-  <div class="card">
-  <div class="card-content">
-    <div class="content">
-      test
+<div class="columns weekly is-justify-content-center">
+  {{#each (get_week monday)}}
+    <div class="column">
+      <div class="card">
+        <header class="card-header mb-0 has-text-centered">
+          <p class="card-header-title is-size-6 has-text-light">
+            {{weekday this}}
+          </p>
+        </header>
+        <header class="card-header mt-0">
+          <p class="card-header-title has-text-white">
+            {{format_date this}}
+          </p>
+        </header>
+        {{#each ../tasks as |task|}}
+        <div class="card-content">
+          <div class="content">
+        {{#if (check_date task.dataValues.date ../this)}}
+            <button class="button is-small is-link">{{task.dataValues.title}}</button>
+        {{/if}}
+          </div>
+        </div>
+        {{/each}}
+      </div>
     </div>
-  </div>
-</div>
-  </div>
   {{/each}}
+</div>
 </div>
