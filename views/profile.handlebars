@@ -6,14 +6,14 @@
 
 <div class="row mt-4">
   <div class="col-md-6">
-    <h5 class="is-size-1 has-text-black has-text-weight-bold	">Create A New Task</h5>
+    <h5 class="is-size-1 has-text-black has-text-weight-bold	">Would You Like To Create A New Task?</h5>
 
     <form class="form new-task-form" id="task-form">
 
       <div class="field">
         <label class="label">Select a Task Frequency:</label>
         <div class="control">
-          <select id="frequency" class="select" name="frequency">
+          <select id="frequency" class="select has-background-white-ter is-rounded" name="frequency">
             <option value="daily">Daily</option>
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
@@ -32,10 +32,10 @@
       </div>
 
       <div class="field">
-        <label for="task-body">Task Details</label>
+        <label for="task-body">Task Details:</label>
         <div class="control">
         <textarea
-          class="textarea"
+          class="textarea has-background-white-ter"
           id="task-body"
           name="task-body"
           placeholder="Additional information..."
@@ -45,14 +45,13 @@
 
       <div class="field">
         <div class="control">
-        <input type="submit" value="Create" class="btn btn-black has-text-white"></input>
+        <input type="submit" value="Create" class="btn has-background-black has-text-white"></input>
         </div>
       </div>
     </form>
 
     {{#if username}}
     <div class="col-md-6 task-list">
-        <h3>Current Tasks:</h3>
 
         {{> task-detail}}
     </div>
