@@ -33,6 +33,11 @@
         {{#if (date_checker day)}}
         {{> holiday holiday=(holiday_info day)}}
         {{/if}}
+        {{#each ../tasks as |task|}}
+        {{#if (task_day task.dataValues.date day)}}
+        {{> task-detail title=task.dataValues.title}}
+        {{/if}}
+        {{/each}}
       </li>
     {{/each}}
   </ul>
