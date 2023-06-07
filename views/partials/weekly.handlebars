@@ -4,11 +4,20 @@
   {{#each (get_week monday)}}
     <div class="column">
       <div class="card">
+        <header class="card-header">
+          <p class="card-header-title">
+            {{format_date this}}
+          </p>
+        </header>
+        {{#each ../tasks as |task|}}
         <div class="card-content">
           <div class="content">
-            {{format_date this}}
+        {{#if (check_date task.dataValues.date ../this)}}
+            <button class="button is-small is-link">{{task.dataValues.title}}</button>
+        {{/if}}
           </div>
         </div>
+        {{/each}}
       </div>
     </div>
   {{/each}}

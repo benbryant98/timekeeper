@@ -49,7 +49,7 @@ module.exports = {
     }
     return dayArray;
   },
-  date_checker: (calDate) => {
+  check_holiday: (calDate) => {
     const holidays = fedHolidays.allForYear(2023, options);
     let bool = false;
     holidays.forEach((holiday) => {
@@ -78,7 +78,7 @@ module.exports = {
   task_day: (taskDate, calDate) => {
     let bool = false;
     const taskMonth = new Date(taskDate).getMonth();
-    taskDate = new Date(taskDate).getDate();
+    taskDate = new Date(taskDate).getDate() + 1;
 
     if (taskDate === calDate && taskMonth === currentMonth) {
       bool = true;
@@ -115,5 +115,14 @@ module.exports = {
   },
   format_date: (date) => {
     return date.toLocaleDateString();
+  },
+  check_date: (firstDate, secondDate) => {
+    const firstMonth = new Date(firstDate).getMonth();
+    const secondMonth = new Date(secondDate).getMonth();
+
+    firstDate = new Date(firstDate).getDate() + 1;
+    secondDate = new Date(secondDate).getDate();
+
+    if (firstDate === secondDate && firstMonth === secondMonth) return true;
   },
 };
