@@ -1,12 +1,12 @@
-<div class="daily-container m-2">
-  <nav class="panel is-pushed-left">
-    <h1
-      class="is-size-3 has-text-weight-bold panel-heading has-background-dark has-text-white"
-    >To-Do Today:</h1>
+
     {{#each tasks as |task|}}
       {{#if (check_date task.dataValues.date ../today)}}
+  <nav class="panel">
+    <h1
+      class="is-size-3 has-text-weight-bold panel-heading has-background-dark has-text-white has-text-centered"
+    >To-Do Today: <span class="has-text-primary">{{format_date ../today}}</span></h1>
         <a class="panel-block has-background-warning">
-          {{task.dataValues.title}}
+          <span class="is-flex is-justify-content-center">{{task.dataValues.title}}</span>
         </a>
       {{/if}}
     {{/each}}
