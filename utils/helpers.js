@@ -106,6 +106,7 @@ module.exports = {
     return weekArray;
   },
   format_date: (date) => {
+    date = new Date(date);
     return date.toLocaleDateString("en-us", { month: "long", day: "numeric" });
   },
   check_date: (firstDate, secondDate) => {
@@ -130,5 +131,15 @@ module.exports = {
     const day = new Date(date).getDay();
 
     return weekdays[day];
+  },
+  cal_buffer: (date) => {
+    date = new Date(date);
+    firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    firstDay = firstDay.getDay();
+    let buffArray = [];
+    for (i = 1; i < firstDay; i++) {
+      buffArray.push(i);
+    }
+    return buffArray;
   },
 };

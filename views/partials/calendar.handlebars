@@ -1,8 +1,8 @@
 <div class="calendar-month m-2">
   <!-- The calendar header -->
-  <section class="calendar-month-header">
+  <section class="calendar-month-header is-flex is-justify-content-center">
     <!-- Month name -->
-    <div id="selected-month" class="calendar-month-header-selected-month">
+    <div id="selected-month" class="calendar-month-header-selected-month ">
       {{current_month}}
       2023
     </div>
@@ -28,6 +28,9 @@
 
   <!-- Calendar grid -->
   <ul id="calendar-days" class="days-grid">
+    {{#each (cal_buffer today)}}
+    <li class="calendar-day buffer"> </li>
+    {{/each}}
     {{#each (days_array) as |day|}}
       <li class="calendar-day">{{day}}
         {{#if (check_holiday day)}}
@@ -35,7 +38,7 @@
         {{/if}}
         {{#each ../tasks as |task|}}
         {{#if (task_day task.dataValues.date day)}}
-        {{> task-detail title=task.dataValues.title}}
+        {{> task-detail title=task.dataValues.title body=task.dataValues.body}}
         {{/if}}
         {{/each}}
       </li>

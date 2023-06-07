@@ -1,7 +1,23 @@
 {{#if logged_in}}
+
+<div class="daily-container m-2 is-flex is-justify-content-center">
+    {{!-- tasks from taskData in route / today from current_day helper in route --}}
 {{> daily tasks=tasks today=today}}
+</div>
+
+<div class="has-background-white my-6" style="height: 4%; border-top: 3px solid black; border-bottom: 3px solid black;"></div>
+
+<div class="weekly-container m-2">
+    {{!-- get_monday is helper that gets the start of the current week --}}
 {{> weekly tasks=tasks monday=(get_monday today)}}
-{{> calendar tasks=tasks }}
+</div>
+
+<div class="has-background-white my-6" style="height: 4%; border-top: 3px solid black; border-bottom: 3px solid black;"></div>
+
+<div class="calendar-container">
+{{> calendar tasks=tasks today=today}}
+</div>
+
 {{else}}
 
 <h1 class="title">Welcome, please login or create an account for full access</h1>
