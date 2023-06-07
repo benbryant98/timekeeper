@@ -12,10 +12,9 @@ router.get("/", async (req, res) => {
       const taskData = await Task.findAll({
         where: { user_id: req.session.user_id },
       });
-      console.log(taskData);
       res.render("home", {
         tasks: taskData,
-        session: req.session,
+        logged_in: true,
       });
     } catch (err) {
       res.status(404).json(err);
