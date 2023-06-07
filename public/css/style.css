@@ -1,3 +1,9 @@
+img { 
+    width: 50%;
+    height: auto;
+    
+  }
+
 label {
     font-family: Arial, Helvetica, sans-serif ;
     font-size: 30px !important;
