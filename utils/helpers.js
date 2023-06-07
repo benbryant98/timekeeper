@@ -1,6 +1,8 @@
 const fedHolidays = require("@18f/us-federal-holidays");
 const options = { shiftSaturdayHolidays: true, shiftSundayHolidays: true };
 
+const currentMonth = new Date().getMonth();
+
 module.exports = {
   format_time: (date) => {
     return date.toLocaleTimeString();
@@ -25,9 +27,8 @@ module.exports = {
       "November",
       "December",
     ];
-    const month = new Date().getMonth();
 
-    return monthNames[month];
+    return monthNames[currentMonth];
   },
   days_num: () => {
     let date = new Date();
@@ -52,10 +53,33 @@ module.exports = {
       const holidayDate = new Date(holiday.date).getDate();
       const holidayMonth = new Date(holiday.date).getMonth();
 
-      if (holidayDate === calDate && holidayMonth === new Date().getMonth()) {
+      if (holidayDate === calDate && holidayMonth === currentMonth) {
         bool = true;
       }
     });
+    return bool;
+  },
+  holiday_info: (date) => {
+    const holidays = fedHolidays.allForYear(2023, options);
+    let holidayInfo = "";
+    holidays.forEach((holiday) => {
+      holidayDate = new Date(holiday.date).getDate();
+      const holidayMonth = new Date(holiday.date).getMonth();
+
+      if (holidayDate === date && holidayMonth === currentMonth) {
+        holidayInfo = holiday.name;
+      }
+    });
+    return holidayInfo;
+  },
+  task_day: (taskDate, calDate) => {
+    let bool = false;
+    const taskMonth = new Date(taskDate).getMonth();
+    taskDate = new Date(taskDate).getDate();
+
+    if (taskDate === calDate && taskMonth === currentMonth) {
+      bool = true;
+    }
     return bool;
   },
 };

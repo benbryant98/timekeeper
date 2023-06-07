@@ -90,3 +90,15 @@ body {
   width: var(--day-label-size);
   height: var(--day-label-size);
 }
+
+.task {
+  display: flex;
+  justify-content: center;
+  margin: 1%;
+}
+
+.holiday {
+  display: flex;
+  justify-content: center;
+}
+
