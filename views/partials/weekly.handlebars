@@ -1,15 +1,15 @@
 <h1 class="is-size-3 has-text-weight-bold">Your week at a glance!</h1>
 
 <div class="columns">
-  {{#each (num_array 7)}}
-  <div class="column">
-  <div class="card">
-  <div class="card-content">
-    <div class="content">
-      test
+  {{#each (get_week monday)}}
+    <div class="column">
+      <div class="card">
+        <div class="card-content">
+          <div class="content">
+            {{format_date this}}
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-  </div>
   {{/each}}
 </div>

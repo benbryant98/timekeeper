@@ -12,6 +12,9 @@ module.exports = {
       new Date(date).getFullYear() + 5
     }`;
   },
+  current_day: () => {
+    return new Date();
+  },
   current_month: () => {
     const monthNames = [
       "January",
@@ -90,10 +93,27 @@ module.exports = {
     return numArray;
   },
   get_monday: (date) => {
+    date = new Date(date);
     let day = date.getDay() || 7;
     if (day !== 1) {
       date.setHours(-24 * (day - 1));
     }
     return date;
+  },
+  get_week: (monday) => {
+    let startDate = new Date(monday);
+    let weekArray = [];
+    for (i = 0; i < 6; i++) {
+      let nextDay = new Date(
+        startDate.getFullYear(),
+        startDate.getMonth(),
+        startDate.getDate() + i
+      );
+      weekArray.push(nextDay);
+    }
+    return weekArray;
+  },
+  format_date: (date) => {
+    return date.toLocaleDateString();
   },
 };

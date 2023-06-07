@@ -1,6 +1,6 @@
 {{#if logged_in}}
 {{> daily tasks=tasks}}
-{{> weekly tasks=tasks}}
+{{> weekly tasks=tasks monday=(get_monday today)}}
 {{> calendar tasks=tasks }}
 {{else}}
 
