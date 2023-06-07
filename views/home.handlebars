@@ -1,4 +1,4 @@
-{{#if session.logged_in}}
+{{#if logged_in}}
 {{> daily tasks=tasks }}
 {{> weekly tasks=tasks}}
 {{> calendar tasks=tasks}}
@@ -6,6 +6,6 @@
 
 <h1>Welcome, please login or create an account for full access</h1>
 
-<h2>{{current_month}}</h2>
+{{> calendar}}
 
 {{/if}}
