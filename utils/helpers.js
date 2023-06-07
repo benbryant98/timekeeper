@@ -4,14 +4,6 @@ const options = { shiftSaturdayHolidays: true, shiftSundayHolidays: true };
 const currentMonth = new Date().getMonth();
 
 module.exports = {
-  format_time: (date) => {
-    return date.toLocaleTimeString();
-  },
-  format_date: (date) => {
-    return `${new Date(date).getMonth() + 1}/${new Date(date).getDate()}/${
-      new Date(date).getFullYear() + 5
-    }`;
-  },
   current_day: () => {
     return new Date();
   },
@@ -103,7 +95,7 @@ module.exports = {
   get_week: (monday) => {
     let startDate = new Date(monday);
     let weekArray = [];
-    for (i = 0; i < 6; i++) {
+    for (i = 0; i < 7; i++) {
       let nextDay = new Date(
         startDate.getFullYear(),
         startDate.getMonth(),
@@ -114,7 +106,7 @@ module.exports = {
     return weekArray;
   },
   format_date: (date) => {
-    return date.toLocaleDateString();
+    return date.toLocaleDateString("en-us", { month: "long", day: "numeric" });
   },
   check_date: (firstDate, secondDate) => {
     const firstMonth = new Date(firstDate).getMonth();
@@ -124,5 +116,19 @@ module.exports = {
     secondDate = new Date(secondDate).getDate();
 
     if (firstDate === secondDate && firstMonth === secondMonth) return true;
+  },
+  weekday: (date) => {
+    const weekdays = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    const day = new Date(date).getDay();
+
+    return weekdays[day];
   },
 };
