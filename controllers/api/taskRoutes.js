@@ -3,7 +3,6 @@ const Task = require("../../models/Task");
 const withAuth = require("../../utils/auth");
 
 router.post("/", withAuth, async (req, res) => {
-  console.log(req.body);
   try {
     const taskData = await Task.create({
       title: req.body.title,
@@ -14,7 +13,6 @@ router.post("/", withAuth, async (req, res) => {
     });
 
     res.status(200).json(taskData);
-    console.log("Task created.");
   } catch (err) {
     res.status(400).json(err);
   }
